@@ -8,10 +8,6 @@ Online materials for active physics learning project conducted at NYU and MIT.
 
 [Task demo and instructions](https://neilrbramley.com/experiments/zendo/main.html)
 
-[Data]()
-
-[Code]()
-
 ## Authors
 
 * **Neil Bramley** -[website](https://neilrbramley.com)
