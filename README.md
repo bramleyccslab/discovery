@@ -8,6 +8,10 @@ Online materials for active physics learning project conducted at NYU and MIT.
 
 [Task demo and instructions](https://neilrbramley.com/experiments/zendo/main.html)
 
+[Participant data](https://github.com/neilbramley/discovery/blob/master/results_processed.rdata)
+
+[PCFG weights](https://github.com/neilbramley/discovery/blob/master/pcfg_weights.csv)
+
 
 ## Authors
 
