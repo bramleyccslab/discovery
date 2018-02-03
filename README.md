@@ -8,11 +8,13 @@ Online materials for active physics learning project conducted at NYU and MIT.
 
 [Task demo and instructions](https://neilrbramley.com/experiments/zendo/main.html)
 
+
 ## Authors
 
 * **Neil Bramley** -[website](https://neilrbramley.com)
 * **Anselm Rothe** - [website](http://anselmrothe.github.io/)
 * **Josh Tenenbaum** - [website](http://web.mit.edu/cocosci/josh.html)
+* **Fei Xu** - [website](http://https://psychology.berkeley.edu/people/fei-xu)
 * **Todd Gureckis** - [website](http://psych.nyu.edu/gureckis/)
 
 ## Acknowledgments
