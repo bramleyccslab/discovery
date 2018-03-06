@@ -2,7 +2,7 @@
 Resources for Data-driven grammatical hypothesis generation in concept learning "Zendo" project
 
 
-Online materials for active physics learning project conducted at NYU and MIT.
+Online materials for active concept learning project conducted at NYU.
 
 ### Experiments
 
