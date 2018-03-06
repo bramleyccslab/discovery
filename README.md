@@ -1,9 +1,6 @@
 # Discovery
 Resources for Data-driven grammatical hypothesis generation in concept learning "Zendo" project
 
-
-Online materials for active concept learning project conducted at NYU.
-
 ### Experiments
 
 [Task demo and instructions](https://neilrbramley.com/experiments/zendo/main.html)
