@@ -1,5 +1,5 @@
 # Discovery
-Resources for Data-driven grammatical hypothesis generation in concept learning "Zendo" project
+Resources for Data-driven grammatical hypothesis generation in concept learning project
 
 ### Experiments
 
@@ -9,10 +9,11 @@ Resources for Data-driven grammatical hypothesis generation in concept learning 
 
 [PCFG weights](https://github.com/neilbramley/discovery/blob/master/pcfg_weights.csv)
 
+[Technical annex](https://github.com/neilbramley/discovery/blob/master/technical_annex.pdf)
 
 ## Authors
 
-* **Neil Bramley** -[website](https://neilrbramley.com)
+* **Neil Bramley** -[website](https://bramleylab.ppls.ed.ac.uk)
 * **Anselm Rothe** - [website](http://anselmrothe.github.io/)
 * **Josh Tenenbaum** - [website](http://web.mit.edu/cocosci/josh.html)
 * **Fei Xu** - [website](http://https://psychology.berkeley.edu/people/fei-xu)
