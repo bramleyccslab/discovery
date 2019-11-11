@@ -1,7 +1,9 @@
 # Discovery
 Resources for Data-driven grammatical hypothesis generation in concept learning project
 
-### Experiments
+For easy reference, we we provide additional details about the models we use in this project below. Specifically, we detail the Context-Free Grammar we use to model normative inference in compositional spaces, the Instance Driven Generation procedure we propose for modelling data-driven hypothesis generation and our approach to Scene Similarity Analysis.
+
+### Pilot demo and data
 
 [Task instructions and demo](https://www.bramleylab.ppls.ed.ac.uk/experiments/zendo/task.html)
 <!-- (https://neilrbramley.com/experiments/zendo/main.html) -->
@@ -12,8 +14,6 @@ Resources for Data-driven grammatical hypothesis generation in concept learning 
 
 <!-- [Technical annex](https://github.com/neilbramley/discovery/blob/master/technical_annex.pdf) -->
 
-
-For reference, we we provide additional details about the models we use in this project below. Specifically, we detail the Context-Free Grammar we use to model normative inference in compositional spaces, the Instance Driven Generation procedure we propose for modelling data-driven hypothesis generation and our approach to Scene Similarity Analysis.
 
 ## “Top-down” Context-Free Generation
 
@@ -26,6 +26,25 @@ Followin Piantadosi, Tenenbaum, and Goodman (2016), we assume the latent space o
 ### “Bottom-up” Instance-Driven Generation
 
 Our Instance-Driven Generation (IDG) proposal (Bramley, Rothe, Tenenbaum, Xu, & Gureckis, 2018) is related to the PCFG idea but with one major difference. Rather than generating guesses entirely context-free, before checking them against the data, we propose that people generate guesses inspired by an encountered positive example Minton et al. (1989). Concretely, we propose that learners start by observing the features of objects in a rule-following scene and use these to back out a true logical statement about the scene in a stochastic but truth preserving way. In this way the learner does not generate uniformly from all possible logical statements, but directly from the restricted space of statements true of the current observation. Figure 1b motivates this approach. Here a learner begins their hypothesis generation with an observation of a scene that follows the hidden rule. To generate hypotheses as candidates for the hidden rule, we assume the learner uses the following procedure:
+1. Observe. With uniform probability, either:
+(a) Sample a object from the observation, then sample one of its features — e.g., #2:2 “medium, size”
+or {#3}: “red, colour”.
+(b) Sample two objects uniformly without replacement from the observation, and samples any shared or
+pairwise feature — e.g., {#1,#2}: “size”, or “contact”
+2. Functionise. Bind a variable for each sampled object in Step 1 and sample a true (in)equality statement relating the variable(s) and feature:
+(a) For a statement involving an unordered feature there is only one possibility — e.g, {#3}: “= (x1,red,color)”, or for {#1,#2}: “=(x1,x2,color)”
+(b) For a single object and an ordered feature this could also be a nonstrict inequality (≥ or ≤). We assume a learner only samples an inequality if it expands the number of objects picked out from the scene relative to an equality — e.g., in Figure 1b, there is also a large object {#1} so either ≥(x1,medium,size) or =(x1,medium,size) might be selected.
+(c) For two objects and an ordered feature, either strict or non-strict inequalities could be sampled if the objects differ on the sampled feature, equivalently either equality or non-strict inequality could be selected if the objects do not differ on that dimension — e.g., {#1,#2} >(x1,x2,size), or {#3,#4} ≥(x1,x2,size).
+3. Extend. With probability 1 go to Step 4, otherwise sample uniformly one of the following expansions 2
+and repeat. For statements with two bound variables Step 3 is performed for x1, then again for x2:
+(a) Conjunction. A object is sampled from the subset picked out by the statement thus far and one of its features sampled — e.g., {#1} ∧(= (x1,green,color), ≥(x1,medium,size)). Again, inequalities are sampled only if they increase the true set size relative to equality — e.g., “∧(≤ (x1, 3, xposition),
+≥ (x1, medium, size))”, which picks out more objects than “∧(= (x1, 3, xposition), ≥ (x1, medium, size))”.
+(b) Disjunction. An additional feature-value pair is selected uniformly from either unselected values of the current feature, or from a different feature — e.g., ∨(= (x1 , color, red), = (x1 , color, blue)) or ∨(= (x1, color, blue), ≥ (x1, size, 2)). This step is skipped if the statement is already true of all the objects in the scene.
+4. Quantify. Given the contained statement, select true quantifier(s):
+(a) For statements involving a single bound variable (i.e., those inspired by a single object in Step 1) the
+possible quantifiers simply depend on the number of the objects in the scene for which the statement holds. The quantifier is selected uniformly from the existential ∃( ) or numerical “exactly N=( ,J)”, “at least N≥( ,J)”, or “at most N≤( ,J)” and J is set to match number of objects for which the statement is true. If it it is true for all objects, the universal quantifier ∀( ) may also be selected.
+(b) Statements involving two bound variables in lambda calculus have two nested quantifier statements each selected as in (a). The inner statement quantifying x2 is selected first based on truth value of the expression while taking x1 to refer to the object observed in ‘1.’. The truth of the selected inner quantified statement is then assessed for all objects to select the outer quantifier — e.g., {#3,#4} “∧(= (x2, green, color), ≤ (x1, x2, size))” might become “∀(λx1 : ∃(λx2 : ∧ (= (x2, green, color), ≤ (x1, x2, size)), X ), X )”. The inner quantifier ∃ is selected because three of the four objects are green {#1, #2, #4}, and the outer statement is selected because all objects are less than or equal in size to a green object.
+One way to think of the IDG procedure is as an inversion of a PCFG. As illustrated by the blue text in the examples in Figure 1, while the PCFG starts at the outside and works in, the IDG starts from the central content and works outward out to a quantified statement, ensuring at each step that this final statement is true of the scene. Note also that the specific algorithm we provide here is only an illustrative example that we expect to refine on the basis of our experiments.
 
 ## Authors
 
