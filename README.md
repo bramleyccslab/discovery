@@ -84,7 +84,7 @@ foundations for compositional cognitive models. Psychological Review, 123(4), 39
 ## Authors
 
 * **Neil Bramley** -[website](https://bramleylab.ppls.ed.ac.uk)
-* **Chris Lucas** -[website](https://homepages.inf.ed.ac.uk/clucas2/)
+<!-- * **Chris Lucas** -[website](https://homepages.inf.ed.ac.uk/clucas2/) -->
 <!-- * **Anselm Rothe** - [website](http://anselmrothe.github.io/) -->
 <!-- * **Josh Tenenbaum** - [website](http://web.mit.edu/cocosci/josh.html) -->
 <!-- * **Fei Xu** - [website](http://https://psychology.berkeley.edu/people/fei-xu) -->
