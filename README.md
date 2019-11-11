@@ -50,7 +50,8 @@ One way to think of the IDG procedure is as an inversion of a PCFG. As illustrat
 
 ### Scene Similarity Analyses
 
-![Figure 2](https://github.com/neilbramley/discovery/blob/master/similarity_worked)
+![Figure 2](https://github.com/neilbramley/discovery/blob/master/similarity_worked.png)
+CAPTION
 
 The scenes we explore in Bramley et al. (2018) involve differing numbers of objects that also vary across five basic dimensions: [colour, size, x-position, y-position, rotation]. Two are continuous (x-position, y-position), one is ordinal (size), one is categorical (colour) and one is cyclical (orientation).
 
