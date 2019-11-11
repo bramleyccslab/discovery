@@ -51,7 +51,10 @@ One way to think of the IDG procedure is as an inversion of a PCFG. As illustrat
 ### Scene Similarity Analyses
 
 ![Figure 2](https://github.com/neilbramley/discovery/blob/master/similarity_worked.png)
-CAPTION
+
+Figure 2. _Calculating similarity. a&b) Two example scenes. Objects indices link the most similar set of objects in b to those in a.  Numbers below indicate the edit distance for each object (i.e.  the sum of scaled dimension adjustments).  The unique object in b is then penalised with the mean edit distance of 3.6.  c) Visualises the components of the overall similarity measures computed across all data in Bramley et al. (2018).  “Raw” simply sums  the  differences  across  the  shared  objects.   Scaled  divides  this  by  the  total  number  of  objects.   Cones difference computes the average difference in the number of cones in the scene and combined adjusts scaled bycones difference to give the measure we adopt._
+
+
 
 The scenes we explore in Bramley et al. (2018) involve differing numbers of objects that also vary across five basic dimensions: [colour, size, x-position, y-position, rotation]. Two are continuous (x-position, y-position), one is ordinal (size), one is categorical (colour) and one is cyclical (orientation).
 
@@ -87,6 +90,5 @@ foundations for compositional cognitive models. Psychological Review, 123(4), 39
 <!-- * **Fei Xu** - [website](http://https://psychology.berkeley.edu/people/fei-xu) -->
 <!-- * **Todd Gureckis** - [website](http://psych.nyu.edu/gureckis/) -->
 
-## Acknowledgments
-
-* Thanks to the Moore-Sloane Data Science Environment at NYU [website](https://cds.nyu.edu/mooresloan/)
+<!-- ## Acknowledgments -->
+<!-- * Thanks to the Moore-Sloane Data Science Environment at NYU [website](https://cds.nyu.edu/mooresloan/) -->
