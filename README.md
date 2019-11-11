@@ -20,6 +20,9 @@ For easy reference, we we provide additional details about the models we use in 
 
 One solution to the problem of learning within an infinite hypothesis space is to sample hypotheses by composing them stochastically from an underlying grammar of sufficient expressivity. In our pilot work, we modelled compositional sampling using a probabilistic context free grammar (or PCFG) Ginsburg (1966) that can produce any rule that can be expressed with first-order logic and lambda abstraction. Note that lambda abstraction provides a simple general formalism for binding entities to variables Church (1932). If a broad enough sample of hypotheses are generated in this way and scored based on their ability to capture available data, it is possible to approximate Bayesian inference Goodman, Tenenbaum, Feldman, and Griffiths (2008). In the current context, binding sets of objects to different variables means that, in the limit, PCFG samples will make all possible logical assertions about the features of, and relations between, subsets of objects within a scene that are necessary and sufficient for a scene to be “rule following”. For instance, grammatical statements include things like “blue objects may not be touching”, or “three objects must be facing the same way”, or “all objects must be green or horizontal but no more than one can be large”, and so on.
 
+
+![Figure 1][dd_gen]
+
 To draw a sample hypothesis using the PCFG in Table 1, one starts with a string containing a single non- terminal symbol (here, S). Non-terminal symbols in the string are then iteratively replaced using expansions drawn from the options in the requisite row of Table 1. Each expansion replaces non-terminal symbols with a mixture of other non-terminal symbols and terminal fragments of first order logic, until no non-terminal symbols remain. The expansions are so designed that the final string is guaranteed to be a valid grammatical expression. Figure 1a gives two example samples from the PCFG detailed in Table 1.1 Because some of the expansions involve branching (e.g., B → H(B, B)), the resultant string can become arbitrarily long and complex, involving multiple Boolean functions and complex relationships between bound variables.
 
 Followin Piantadosi, Tenenbaum, and Goodman (2016), we assume the latent space of possible concepts in our task to be those expressible in first-order logic combined with lambda abstraction and full knowledge of the objects’ relevant features. However, our choice of expansion rules is one of many that can produce this class of expressions. Furthermore, the probabilities for each expansion can be set separately. This all means that the PCFG framework is a flexible way of encoding a learner’s inductive bias, or prior, over a compositional hypothesis space with different choices of expansion and different weights shaping the frequency with which a particular expression will be produced. Provided the expansions that involve branching do not occur with too high a probability, shorter expressions will naturally be favoured, organically capturing Ockham’s razor.
@@ -46,20 +49,30 @@ One way to think of the IDG procedure is as an inversion of a PCFG. As illustrat
 
 ### Scene Similarity Analyses
 
+![Figure 2][similarity_worked]
+
 The scenes we explore in Bramley et al. (2018) involve differing numbers of objects that also vary across five basic dimensions: [colour, size, x-position, y-position, rotation]. Two are continuous (x-position, y-position), one is ordinal (size), one is categorical (colour) and one is cyclical (orientation).
+
 To establish the overall similarity between two scenes we need to map the objects in a given scene to the objects in another scene (for example between the scenes in Figure 2a and b) and establish a reasonable cost for the differences between objects across dimensions. We also need a procedure for cases where there are objects in one scene that have no analogue in the other. We approach the calculation of similarity via the principle of minimum edit distance (Levenshtein, 1966). This means summing up the elementary operations required to convert scene a into scene b or visa versa. We assume objects can be adjusted in one dimension at a time (i.e. moving them on the x axis, rotating them, or changing their colour, and so on.
+
 Before focusing on how to map the objects between the scenes we must decide how to measure the adjustment distance for a particular object in scene a to its supposed analogue in scene b. As a simple way to combine the edit costs across dimensions we first z-score each dimension, such that the average distance between any two values across all objects and all scenes and dimensions is 1. We then take the L1-norm (or city block distance) as the cost for converting an object in scene (a) to an object in scene (b), or visa versa.3 Note this is sensitive the size of the adjustment, penalising larger changes in position, orientation or size more severely than smaller changes, while changes in colour are all considered equally large since colour is taken as categorical. Note also that for orientation differences we also always assume the shortest distance around the circle.
+
 If scene a has an object that do not exist in scene b we assume a default adjustment penalty equal to the average divergence between two objects across all comparisons. We do the the same for any object that exists in a but not b.
+
 Calculating the overall similarity between two scenes involves solving a mapping problem of identifying which objects in scene (a) are “the same” as those in scene b. We resolve this charitably, by searching exhaustively for the mapping of objects in scene a to scene b that minimises the edit distance. Having selected the mapping, computed the edit distance including any costs for additional or removed objects, we divide by the number shared cones, so as to avoid penalising larger more complex scenes.
 
 ### References
 Bramley, N. R., Rothe, A., Tenenbaum, J. B., Xu, F., & Gureckis, T. M. (2018). Grounding compositional hypothesis generation in specific instances. In Proceedings of the 40th Annual Meeting of the Cognitive Science Society. Austin, TX: Cognitive Science Society.
+
 Church, A. (1932). A set of postulates for the foundation of logic. Annals of mathematics, 346–366. Ginsburg, S. (1966). The mathematical theory of context free languages. McGraw-Hill Book Company. Goodman, N. D., Tenenbaum, J. B., Feldman, J., & Griffiths, T. L. (2008). A rational analysis of rule-based
 concept learning. Cognitive Science, 32(1), 108–154.
+
 Levenshtein, V. I. (1966). Binary codes capable of correcting deletions, insertions, and reversals. In Soviet
 physics doklady (Vol. 10, pp. 707–710).
+
 Minton, S., Carbonell, J. G., Knoblock, C. A., Kuokka, D. R., Etzioni, O., & Gil, Y. (1989). Explanation-based
 learning: A problem solving perspective. Artificial Intelligence, 40(1-3), 63–118.
+
 Piantadosi, S. T., Tenenbaum, J. B., & Goodman, N. D. (2016). The logical primitives of thought: Empirical
 foundations for compositional cognitive models. Psychological Review, 123(4), 392.
 
