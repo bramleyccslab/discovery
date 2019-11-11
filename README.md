@@ -2,7 +2,7 @@
 Resources for Data-driven grammatical hypothesis generation in concept learning project
 
 
-### Pilot demo and data
+## Pilot demo and data
 
 [Task instructions and demo](https://www.bramleylab.ppls.ed.ac.uk/experiments/zendo/task.html)
 <!-- (https://neilrbramley.com/experiments/zendo/main.html) -->
@@ -13,10 +13,11 @@ Resources for Data-driven grammatical hypothesis generation in concept learning 
 
 <!-- [Technical annex](https://github.com/neilbramley/discovery/blob/master/technical_annex.pdf) -->
 
+## Technical Annex
 
 For easy reference, we we provide additional details about the models we use in this project below. Specifically, we detail the Context-Free Grammar we use to model normative inference in compositional spaces, the Instance Driven Generation procedure we propose for modelling data-driven hypothesis generation and our approach to Scene Similarity Analysis.
 
-## “Top-down” Context-Free Generation
+### “Top-down” Context-Free Generation
 
 One solution to the problem of learning within an infinite hypothesis space is to sample hypotheses by composing them stochastically from an underlying grammar of sufficient expressivity. In our pilot work, we modelled compositional sampling using a probabilistic context free grammar (or PCFG) Ginsburg (1966) that can produce any rule that can be expressed with first-order logic and lambda abstraction. Note that lambda abstraction provides a simple general formalism for binding entities to variables Church (1932). If a broad enough sample of hypotheses are generated in this way and scored based on their ability to capture available data, it is possible to approximate Bayesian inference Goodman, Tenenbaum, Feldman, and Griffiths (2008). In the current context, binding sets of objects to different variables means that, in the limit, PCFG samples will make all possible logical assertions about the features of, and relations between, subsets of objects within a scene that are necessary and sufficient for a scene to be “rule following”. For instance, grammatical statements include things like “blue objects may not be touching”, or “three objects must be facing the same way”, or “all objects must be green or horizontal but no more than one can be large”, and so on.
 
