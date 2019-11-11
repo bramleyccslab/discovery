@@ -28,10 +28,8 @@ Followin Piantadosi, Tenenbaum, and Goodman (2016), we assume the latent space o
 
 Our Instance-Driven Generation (IDG) proposal (Bramley, Rothe, Tenenbaum, Xu, & Gureckis, 2018) is related to the PCFG idea but with one major difference. Rather than generating guesses entirely context-free, before checking them against the data, we propose that people generate guesses inspired by an encountered positive example Minton et al. (1989). Concretely, we propose that learners start by observing the features of objects in a rule-following scene and use these to back out a true logical statement about the scene in a stochastic but truth preserving way. In this way the learner does not generate uniformly from all possible logical statements, but directly from the restricted space of statements true of the current observation. Figure 1b motivates this approach. Here a learner begins their hypothesis generation with an observation of a scene that follows the hidden rule. To generate hypotheses as candidates for the hidden rule, we assume the learner uses the following procedure:
 1. Observe. With uniform probability, either:
-  1. Sample a object from the observation, then sample one of its features — e.g., #2:2 “medium, size”
-or {#3}: “red, colour”.
-  2. Sample two objects uniformly without replacement from the observation, and samples any shared or
-pairwise feature — e.g., {#1,#2}: “size”, or “contact”
+	Sample a object from the observation, then sample one of its features — e.g., #2:2 “medium, size” or {#3}: “red, colour”.
+	Sample two objects uniformly without replacement from the observation, and samples any shared or pairwise feature — e.g., {#1,#2}: “size”, or “contact”.
 2. Functionise. Bind a variable for each sampled object in Step 1 and sample a true (in)equality statement relating the variable(s) and feature:
   - (a) For a statement involving an unordered feature there is only one possibility — e.g, {#3}: “= (x1,red,color)”, or for {#1,#2}: “=(x1,x2,color)”
   - (b) For a single object and an ordered feature this could also be a nonstrict inequality (≥ or ≤). We assume a learner only samples an inequality if it expands the number of objects picked out from the scene relative to an equality — e.g., in Figure 1b, there is also a large object {#1} so either ≥(x1,medium,size) or =(x1,medium,size) might be selected.
