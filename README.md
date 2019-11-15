@@ -7,9 +7,9 @@ Resources for Data-driven grammatical hypothesis generation in concept learning 
 [Task instructions and demo](https://www.bramleylab.ppls.ed.ac.uk/experiments/zendo/task.html)
 <!-- (https://neilrbramley.com/experiments/zendo/main.html) -->
 
-[Participant data](https://github.com/neilbramley/discovery/blob/master/results_processed.rdata)
+[Pilot data](https://github.com/neilbramley/discovery/blob/master/results_processed.rdata)
 
-[PCFG weights](https://github.com/neilbramley/discovery/blob/master/pcfg_weights.csv)
+<!-- [PCFG weights](https://github.com/neilbramley/discovery/blob/master/pcfg_weights.csv) -->
 
 <!-- [Technical annex](https://github.com/neilbramley/discovery/blob/master/technical_annex.pdf) -->
 
