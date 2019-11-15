@@ -64,7 +64,7 @@ Before focusing on how to map the objects between the scenes we must decide how 
 
 If scene a has an object that do not exist in scene b we assume a default adjustment penalty equal to the average divergence between two objects across all comparisons. We do the the same for any object that exists in a but not b.
 
-Calculating the overall similarity between two scenes involves solving a mapping problem of identifying which objects in scene (a) are “the same” as those in scene b. We resolve this charitably, by searching exhaustively for the mapping of objects in scene a to scene b that minimises the edit distance. Having selected the mapping, computed the edit distance including any costs for additional or removed objects, we divide by the number shared cones, so as to avoid penalising larger more complex scenes.
+Calculating the overall similarity between two scenes involves solving a mapping problem of identifying which objects in scene (a) are “the same” as those in scene b. We resolve this "charitably", by searching exhaustively for the mapping of objects in scene a to scene b that minimises the total edit distance. Having selected this mapping, and computed the final edit distance including any costs for additional or removed objects, we divide by the number shared cones, so as to avoid the dissimilarities increasing with the number of objects involved.
 
 ### References
 Bramley, N. R., Rothe, A., Tenenbaum, J. B., Xu, F., & Gureckis, T. M. (2018). Grounding compositional hypothesis generation in specific instances. In Proceedings of the 40th Annual Meeting of the Cognitive Science Society. Austin, TX: Cognitive Science Society.
